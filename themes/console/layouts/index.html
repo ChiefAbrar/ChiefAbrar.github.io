@@ -1,0 +1,81 @@
+{{ define "main" }}
+
+<h1>Henlo</h1>
+
+<p>
+    I am Abrar. Currently studying in BRAC University.<br>
+    My LinkedIn profile: <a href="https://www.linkedin.com/in/md-a-a-ansari-abrar-23b531329/" target="_blank">Click Here</a>
+</p>
+<br/>
+
+<h1>Articles</h1>
+<p>
+    I write on Medium: <a href="https://medium.com/@ansariabrar" target="_blank">Click Here</a>
+</p>
+<h1>Notes</h1>
+<p>I take notes about both academic topics and also about topics outside my academic scope(CP, CTF, BlockChain etc.):</p>
+<ul>
+    <li>
+        <a href="https://github.com/ChiefAbrar/LaTeX" target="_blank">
+            General repo(not academic)
+        </a>
+    </li>
+    <li>
+        <a href="https://github.com/ChiefAbrar/Pattern_Problems-LinearTimeComplexity" target="_blank">
+            CSE-110(Pattern_Problems-LinearTimeComplexity)
+        </a>
+    </li>
+    <li>
+        <a href="https://github.com/ChiefAbrar/CSE-230" target="_blank">
+            CSE-230(Discrete Mathematics)
+        </a>
+    </li>
+</ul>
+<h1>Projects</h1>
+<p>I did some projects(I made it open-source). Yet, not quite a big accomplishment been made! However, here it is:</p>
+<ul>
+    <li><a href="https://github.com/ChiefAbrar/Quran-Discord-bot" target="_blank">Project 1: Quran Discord Bot</a></li>
+    <li><a href="https://github.com/ChiefAbrar/ImageToASCII" target="_blank">Project 2: ImageToASCII.txt</a></li>
+    <li><a href="https://github.com/ChiefAbrar/Advising_Help_Discord_bot" target="_blank">Project 3: Advising Help Bot</a></li>
+</ul>
+<h1>Manim Projects</h1>
+<p>I have done some projects in Manim too! Thanks to Brian Sanderson for motivating me to learn this through his 3Blue1Brown (3b1b) videos.<br>
+My Manim repo: <a href="https://github.com/ChiefAbrar/Manim_projects" target="_blank">Here</a></p>
+
+<div class="posts-list">
+{{ with .Site.GetPage "/posts" }}
+    {{ range first 3 (sort .Data.Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
+        <div class="post">
+            <p>
+                <div class="date">{{ .PublishDate.Format "Jan. 2, 2006" }}</div>
+                <h1><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h1>
+                {{ .Summary }}
+            </p>
+        </div>    
+    {{ end }}
+{{ end }}
+</div>
+
+<h1>Photography</h1>
+<p>Depending on my mood I often take photos :3<br>
+Check them in the new page: </p>
+<a href="photography.html">
+    <button style="padding: 10px 20px; background-color: #62c4ff; border: none; color: white; border-radius: 5px; cursor: pointer;">
+        View Photos
+    </button>
+</a>
+<div class="image-grid">
+{{ with .Site.GetPage "/photos" }}
+    {{ range first 3 (sort .Data.Pages "Date" "desc")}}
+        <a href="{{ .Permalink }}" title="{{ .Title }}">
+        {{ $image := .Page.Resources.GetMatch .Params.image }}
+        {{ with $image }}
+            {{ $thumb := .Resize "400x" }}
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="img-responsive">
+        {{end}}
+        </a>
+    {{ end }}
+{{ end }}
+</div>
+
+{{ end }}
