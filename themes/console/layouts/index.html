@@ -57,13 +57,23 @@ My Manim repo: <a href="https://github.com/ChiefAbrar/Manim_projects" target="_b
 </div>
 
 <h1>Photography</h1>
-<p>Depending on my mood I often take photos :3<br>
-Check them in the new page: </p>
-<a href="photography.html">
-    <button style="padding: 10px 20px; background-color: #62c4ff; border: none; color: white; border-radius: 5px; cursor: pointer;">
-        View Photos
-    </button>
-</a>
+<p>Depending on my mood I often take photos :3 (most of them are taken in Holy-Land!) </p>
+<link rel="stylesheet" href="style.css">
+<div class="image-grid">
+    <img src="10.jpg" alt="Photo 1" class="photo">
+    <img src="5.jpg" alt="Photo 2" class="photo">
+    <img src="1.jpg" alt="Photo 3" class="photo">
+    <img src="2.jpg" alt="Photo 4" class="photo">
+    <img src="3.jpg" alt="Photo 3" class="photo">
+    <img src="6.jpg" alt="Photo 3" class="photo">
+    <img src="8.jpg" alt="Photo 3" class="photo">
+    <img src="11.jpg" alt="Photo 3" class="photo">
+    <img src="4.jpg" alt="Photo 3" class="photo">
+    <img src="7.jpg" alt="Photo 1" class="photo">
+    <img src="9.jpg" alt="Photo 3" class="photo">
+    <img src="12.jpg" alt="Photo 3" class="photo">
+  </div>
+</div>
 <div class="image-grid">
 {{ with .Site.GetPage "/photos" }}
     {{ range first 3 (sort .Data.Pages "Date" "desc")}}
